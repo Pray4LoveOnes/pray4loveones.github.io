@@ -1,9 +1,11 @@
 {
   "captured_at_utc": "2026-10-08T02:01:23.110772+00:00",
   "git": {
-    "branch": "UNKNOWN_LOCAL_GIT_NOT_FOUND",
-    "commit": "UNKNOWN_LOCAL_GIT_NOT_FOUND",
-    "working_tree_clean": true,
+    "branch": null,
+    "commit": null,
+    "repository_available": false,
+    "status": "SOURCE_WORKSPACE_NOT_GIT_CHECKOUT",
+    "working_tree_clean": null,
     "working_tree_porcelain": []
   },
   "production_smoke": {
@@ -73,6 +75,11 @@
     ],
     "renderers": 6,
     "target": "AGENTCHAIN_SOVEREIGN_CITY"
+  },
+  "topology": {
+    "product_districts": 8,
+    "runtime_surfaces": 7,
+    "note": "Product districts and projected runtime surfaces are distinct taxonomies."
   },
   "truth_boundary": {
     "chain_signing": "DISABLED",

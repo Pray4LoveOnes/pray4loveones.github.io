@@ -11,6 +11,7 @@
   const summary = document.querySelector('#inquiry-summary');
   const copyButton = document.querySelector('#copy-inquiry');
   const downloadButton = document.querySelector('#download-inquiry');
+  const openInquiry = document.querySelector('#open-inquiry');
   const status = document.querySelector('#copy-status');
   let inquiryText = '';
   function value(name) { const field = form.elements[name]; return field ? field.value.trim() : ''; }
@@ -19,6 +20,11 @@
       event.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
       inquiryText = ['AGENTCHAIN TECHNICAL EVALUATION INQUIRY','========================================','', 'Name: ' + value('name'),'Company: ' + value('company'),'Role: ' + value('role'),'Email: ' + value('email'),'Company size: ' + value('companySize'),'Organization type: ' + value('organizationType'),'Primary use case: ' + value('useCase'),'Networks / infrastructure: ' + (value('networks') || 'Not specified'),'Interest type: ' + value('interestType'),'','Discussion context:',value('description'),'','Generated locally at https://pray4loveones.github.io/','No data was transmitted by this form.'].join('\n');
+      if (openInquiry) {
+        const title = 'Technical evaluation: ' + value('company') + ' — ' + value('interestType');
+        const publicInquiryText = ['AGENTCHAIN PUBLIC TECHNICAL EVALUATION INQUIRY','================================================','', 'Company: ' + value('company'),'Role: ' + value('role'),'Company size: ' + value('companySize'),'Organization type: ' + value('organizationType'),'Primary use case: ' + value('useCase'),'Networks / infrastructure: ' + (value('networks') || 'Not specified'),'Interest type: ' + value('interestType'),'','Discussion context:',value('description'),'','This issue is public. No email address or private contact data was copied from the local form.'].join('\n');
+        openInquiry.href = 'https://github.com/Pray4LoveOnes/pray4loveones.github.io/issues/new?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(publicInquiryText);
+      }
       summary.textContent = inquiryText; result.hidden = false; result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }

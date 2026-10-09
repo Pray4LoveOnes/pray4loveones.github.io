@@ -6,15 +6,17 @@ Public URL: <https://pray4loveones.github.io>
 
 ## Technology
 
-The site is built with static HTML, CSS, and vanilla JavaScript. It has no backend, database, analytics tracker, cookies, wallet connection, transaction signing, or external form endpoint.
+The site is built with static HTML, CSS, and vanilla JavaScript. It has no backend, database, analytics tracker, cookies, wallet connection, transaction signing, or first-party form endpoint. The evaluation form prepares text locally and, only after a deliberate click, can open a public GitHub issue with email and private contact fields excluded.
 
 ## Deployment
 
 GitHub Pages publishes the `main` branch for `Pray4LoveOnes/pray4loveones.github.io`.
 
+Repository checks run JavaScript syntax validation, internal-link and anchor validation, required-asset checks, JSON parsing, and public truth-boundary assertions before changes are accepted.
+
 ## Security boundary
 
-No secrets, private keys, seed phrases, credentials, wallet information, private runtime material, or confidential diligence files belong in this repository. The technical evaluation form validates and formats an inquiry entirely in the browser; it does not transmit prospect data.
+No secrets, private keys, seed phrases, credentials, wallet information, private runtime material, or confidential diligence files belong in this repository. GitHub issues are public and must contain only non-confidential inquiry material.
 
 ## Licensing and intellectual property
 

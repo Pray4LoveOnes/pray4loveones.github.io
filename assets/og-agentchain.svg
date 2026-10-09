@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AgentChain sovereign execution infrastructure">
+  <defs><radialGradient id="g" cx="15%" cy="0%" r="90%"><stop offset="0" stop-color="#173a60"/><stop offset=".55" stop-color="#07111f"/><stop offset="1" stop-color="#05070b"/></radialGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <path d="M0 104h1200M0 526h1200" stroke="#203247"/>
+  <g fill="none" stroke="#6de8ff" stroke-opacity=".3"><circle cx="1010" cy="315" r="180"/><circle cx="1010" cy="315" r="110"/><path d="M830 315h360M1010 135v360"/></g>
+  <text x="90" y="170" fill="#6de8ff" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="6">AGENTCHAIN</text>
+  <text x="90" y="290" fill="#e9f7ff" font-family="Arial,sans-serif" font-size="66" font-weight="700">Sovereign execution</text>
+  <text x="90" y="370" fill="#e9f7ff" font-family="Arial,sans-serif" font-size="66" font-weight="700">infrastructure.</text>
+  <text x="90" y="444" fill="#8ca6bb" font-family="Arial,sans-serif" font-size="26">Deterministic execution · Verifiable receipts · Explicit authority</text>
+</svg>

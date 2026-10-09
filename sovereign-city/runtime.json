@@ -1,6 +1,6 @@
 {
   "captured_at_utc": "2026-10-08T02:01:23.110772+00:00",
-  "git_commit": "UNKNOWN_LOCAL_GIT_NOT_FOUND",
+  "git_commit": null,
   "production_smoke": {
     "agent_programs": 3,
     "base": "http://127.0.0.1:3000",
@@ -44,6 +44,15 @@
   "qualification": "PASS",
   "schema": "agentchain-sovereign-city-public-snapshot/4",
   "state_space_target": "AGENTCHAIN_SOVEREIGN_CITY",
+  "source_provenance": {
+    "repository_available": false,
+    "status": "SOURCE_WORKSPACE_NOT_GIT_CHECKOUT",
+    "binding": "state_root_and_complete_receipt"
+  },
+  "topology": {
+    "product_districts": 8,
+    "runtime_surfaces": 7
+  },
   "truth_boundary": {
     "chain_signing": "DISABLED",
     "github_pages_is_execution_backend": false,
