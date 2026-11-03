@@ -10,12 +10,20 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: node --check assets/js/main.js
+      - run: node --check assets/js/agentchain-demo.js
       - run: node --check sovereign-city/app.js
+      - run: node --check sovereign-city/workbench.js
+      - run: node --check navier-stokes/visualization/app.js
+      - run: node --check scripts/check-site.mjs
+      - run: node --check scripts/test-agentchain-demo.mjs
+      - run: node --check scripts/test-sovereign-city.cjs
       - run: node scripts/check-site.mjs
+      - run: node scripts/test-agentchain-demo.mjs
+      - run: node scripts/test-sovereign-city.cjs

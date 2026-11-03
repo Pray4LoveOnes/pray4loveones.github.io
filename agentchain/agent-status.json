@@ -1,1 +1,80 @@
-{"schema":"agentchain-status/0","snapshot_date":"2026-11-02","release_candidate":"local-only","production_admission":"blocked","public_network":"not-deployed","public_agent_service":"not-deployed","value_execution":"disabled","gates":{"B30":"blocked_missing_verified_seven_host_inventory","B31":"blocked_external_custody_evidence","B32":"blocked_independent_wan_qualification","B33":"blocked_independent_review","B34":"blocked_production_admission"},"scale":{"independent_agents_verified":0,"simulated_agent_population_qualification":"not_demonstrated","task_concurrency":"not_agent_count"},"commercial":{"deployed_paid_service":false,"customers_asserted":false,"revenue_asserted":false,"published_pricing_commitment":false}}
+{
+  "schema": "agentchain-status/0",
+  "snapshot_date": "2026-11-03",
+  "production_admission": "blocked",
+  "public_network": "not_deployed",
+  "public_agent_service": "not_deployed",
+  "value_execution": "disabled",
+  "gates": {
+    "B30": "blocked_missing_verified_seven_host_inventory",
+    "B31": "blocked_external_custody_evidence",
+    "B32": "blocked_independent_wan_qualification",
+    "B33": "blocked_independent_review",
+    "B34": "blocked_production_admission"
+  },
+  "scale": {
+    "independent_agents_verified": 0,
+    "simulated_agent_population_qualification": "not_demonstrated",
+    "task_concurrency": "not_agent_count",
+    "reported_local_workload": {
+      "date": "2026-09-30",
+      "concurrent_tasks": 10000,
+      "unit": "Go goroutine tasks",
+      "result": "reported local qualification: common release barrier, all tasks completed, no invalid or duplicate results, deterministic aggregate root across normal and race-instrumented runs",
+      "independent_agent_population": false
+    }
+  },
+  "commercial": {
+    "deployed_paid_service": false,
+    "customers_asserted": false,
+    "revenue_asserted": false,
+    "published_pricing_commitment": false
+  },
+  "platform_status": "active_development",
+  "website_publication": "public_static_documentation",
+  "software_distribution": "not_released",
+  "implemented_capabilities": [
+    "agent identity and dual-proof key rotation",
+    "signed work commitments",
+    "signed contributions",
+    "weighted set-coverage evaluation",
+    "review attestations",
+    "parent-linked signed state events",
+    "Sovereign Echo identity and evidence-linked lineage in the local workbench"
+  ],
+  "history": {
+    "owner_attributed_lineage": ["SoulSync", "SolaraKin", "AgentChain"],
+    "lineage_period": "2025 onward",
+    "authorship_status": "attributed_project_history; not an independent legal authorship finding",
+    "implementation_evidence": {
+      "earliest_preserved_solaraKin_record": {
+        "date": "2025-07-11",
+        "evidence_class": "date recorded in an owner-controlled technical inventory",
+        "public_source_material": false
+      },
+      "agentchain_protocol_work_documented_by": "2026-08-29"
+    },
+    "historical_architectures": [
+      {
+        "date": "2026-08-29",
+        "logical_validators": 4,
+        "quorum": "3-of-4",
+        "status": "historical_design"
+      },
+      {
+        "date": "2026-10-31",
+        "logical_validators": 7,
+        "quorum": "5-of-7",
+        "status": "documented_launch_profile; physical host qualification remains separate"
+      }
+    ]
+  },
+  "scale_context": {
+    "architecture_population": {
+      "configured_agents_per_shard": 10000,
+      "classification": "documented Sovereign Workspace architecture/configuration",
+      "independent_runtime_qualification": false
+    },
+    "task_qualification_is_separate": true
+  }
+}

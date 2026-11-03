@@ -1,1 +1,85 @@
-{"schema":"agentchain-public-profile/0","profile":"proof-of-agency-v0","status":"local-research-prototype","wire_compatibility":"not-guaranteed","implemented_locally":["identity-and-dual-proof-rotation","signed-contribution","weighted-set-coverage","review-attestation","budget-capped-work-commitment","parent-linked-state-event"],"not_implemented":["cross-language-canonical-wire-standard","consensus-state-transition","agent-service","settlement","sybil-resistance","general-truth-verification","10000-independent-agent-qualification"],"evaluator_families":["weighted-set-coverage"],"settlement_enabled":false,"source_distribution":"not-authorized","updated":"2026-11-02"}
+{
+  "schema": "agentchain-public-profile/0",
+  "profile": "proof-of-agency-v0",
+  "status": "implemented",
+  "wire_compatibility": "not-guaranteed",
+  "implemented_locally": [
+    "identity-and-dual-proof-rotation",
+    "signed-contribution",
+    "weighted-set-coverage",
+    "review-attestation",
+    "budget-capped-work-commitment",
+    "parent-linked-state-event"
+  ],
+  "not_implemented": [
+    "cross-language-canonical-wire-standard",
+    "consensus-state-transition",
+    "agent-service",
+    "settlement",
+    "sybil-resistance",
+    "general-truth-verification",
+    "10000-independent-agent-qualification"
+  ],
+  "evaluator_families": [
+    "weighted-set-coverage"
+  ],
+  "settlement_enabled": false,
+  "source_distribution": "not-authorized",
+  "updated": "2026-11-03",
+  "execution_scope": "local",
+  "project_lineage": {
+    "owner_attributed_sequence": ["SoulSync", "SolaraKin", "AgentChain"],
+    "period": "2025 onward",
+    "authorship_status": "attributed_project_history; not an independent legal authorship finding",
+    "earliest_preserved_solaraKin_record_date": "2025-07-11",
+    "agentchain_protocol_work_documented_by": "2026-08-29"
+  },
+  "historical_validator_profiles": [
+    {
+      "date": "2026-08-29",
+      "logical_validators": 4,
+      "quorum": "3-of-4",
+      "classification": "historical protocol design"
+    },
+    {
+      "date": "2026-10-31",
+      "logical_validators": 7,
+      "quorum": "5-of-7",
+      "classification": "documented launch profile; not production admission"
+    }
+  ],
+  "scale_context": {
+    "configured_agents_per_shard": 10000,
+    "architecture_configuration_is_qualification": false,
+    "separate_local_task_qualification": {
+      "date": "2026-09-30",
+      "concurrent_tasks": 10000,
+      "unit": "Go goroutine tasks",
+      "independent_agents": false
+    }
+  },
+  "sovereign_echo": {
+    "profile": "agentchain-sovereign-echo/0",
+    "status": "implemented",
+    "execution_scope": "local_workbench",
+    "display_coordinate": "⁰⁰⁹",
+    "meaning": [
+      "origin event",
+      "continuity",
+      "echo index"
+    ],
+    "record_fields": [
+      "echo_id",
+      "origin_event_hash",
+      "agent_id",
+      "parent_echo_id",
+      "evidence_commitment",
+      "generation",
+      "execution_state"
+    ],
+    "display_coordinate_is_authority": false,
+    "grants_execution_authority": false,
+    "settlement_finality": false,
+    "public_service": false
+  }
+}

@@ -29,3 +29,4 @@ body:before{opacity:.13;background-size:72px 72px;mask-image:linear-gradient(to 
 @media(max-width:900px){.hero{min-height:690px}.site-nav{gap:8px}.site-nav a{font-size:9px}}
 @media(max-width:700px){.hero{min-height:690px;padding:68px 0}.hero:after{right:-55%;top:35%;width:112vw;height:112vw}.hero-meta{gap:22px;margin-top:54px}.hero-meta span{font-size:10px}.section{padding:82px 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+:where(.hero-history){max-width:680px;margin:1rem 0;color:var(--muted);font-size:.9rem;line-height:1.6}.hero-history a{color:var(--accent);text-underline-offset:.2em}

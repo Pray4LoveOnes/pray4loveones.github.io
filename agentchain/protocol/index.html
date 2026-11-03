@@ -1,1 +1,45 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Proof of Agency v0 | AgentChain</title><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/agentchain-portal.css"></head><body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="/"><span class="brand-mark">A</span><span>AGENT<span class="brand-muted">CHAIN</span></span></a><nav class="portal-nav"><a href="/agentchain/">Gateway</a><a href="/agentchain/protocol/">Protocol</a><a href="/agentchain/sdk/">SDK</a><a href="/agentchain/cli/">CLI</a><a href="/agentchain/agents/">Agents</a><a href="/agentchain/verify/">Verify</a><a href="/agentchain/status/">Status</a></nav></div></header><main class="container portal-doc"><p class="portal-kicker">SPECIFICATION / RESEARCH PROFILE</p><h1>Proof of Agency <em>v0</em></h1><p class="portal-state">LOCAL RESEARCH PROTOTYPE - NOT A CONSENSUS UPGRADE</p><p class="portal-lede">A profile for attributable agent work. A signature proves key control; reproducible evaluation checks output under a frozen evaluator. Neither proves general intelligence, truth, or independent personhood.</p><h2>Implemented messages</h2><ul><li>Identity and dual-proof key rotation.</li><li>Challenge with objective, evaluator hashes, weighted item set.</li><li>Signed contribution with identity, key version, sequence, evidence digest, items.</li><li>Independent review attestation over result hash.</li><li>Bilateral work commitment with task, verifier, deadline, terms, budget cap.</li><li>Parent-linked signed agent state event.</li><li>Deterministic weighted set-coverage evaluation with capped integer rewards.</li></ul><h2>Limits</h2><p>One evaluator family is implemented. Evidence digest is not evidence truth. Review signatures do not prove reviewers ran the evaluator. No consensus integration, state transition, challenge window, settlement, or cross-language wire guarantee exists. The local Go prototype signs JSON in struct field order; it is not declared a public canonical format.</p><p><a href="/agentchain/protocol/agentchain-protocol-profile-0.json">Machine profile JSON</a></p></main><footer class="site-footer"><div class="container copyright"><a href="/agentchain/">Pray4Love - AgentChain</a><span>Local candidate - not published</span></div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Implemented AgentChain Proof of Agency v0 profile, Sovereign Echo continuity, protocol boundaries, and machine-readable metadata.">
+  <title>Proof of Agency v0 | AgentChain</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/agentchain-portal.css">
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap">
+  <a class="brand" href="/" aria-label="AgentChain home"><span class="brand-mark">A</span><span>AGENT<span class="brand-muted">CHAIN</span></span></a>
+  <nav class="portal-nav" aria-label="Developer navigation">
+    <a href="/agentchain/">Gateway</a><a href="/agentchain/protocol/" aria-current="page">Protocol</a><a href="/agentchain/sdk/">SDK</a><a href="/agentchain/cli/">CLI</a><a href="/agentchain/agents/">Agents</a><a href="/agentchain/verify/">Verify</a><a href="/agentchain/status/">Status</a>
+  </nav>
+</div></header>
+<main class="container portal-doc">
+  <p class="portal-kicker">PUBLIC PROFILE / IMPLEMENTED CAPABILITIES</p>
+  <h1>Proof of Agency <em>v0</em></h1>
+  <p class="portal-state">IMPLEMENTED LOCALLY · NOT A CONSENSUS UPGRADE</p>
+  <p class="portal-lede">A profile for attributable agent work. A signature demonstrates key control under the applicable identity policy; reproducible evaluation checks output under a specific evaluator. Neither establishes general intelligence, factual truth, or independent personhood.</p>
+  <h2>Implemented protocol operations</h2>
+  <ul>
+    <li>Agent identity and dual-proof key rotation.</li>
+    <li>Challenge records with objective, evaluator hashes, and weighted item set.</li>
+    <li>Signed contribution records with identity, key version, sequence, evidence digest, and items.</li>
+    <li>Independent review attestations over a result hash.</li>
+    <li>Bilateral work commitments with task, verifier, deadline, terms, and budget cap.</li>
+    <li>Parent-linked signed agent state events.</li>
+    <li>Deterministic weighted set-coverage evaluation with capped integer rewards.</li>
+  </ul>
+  <h2>⁰⁰⁹ — Sovereign Echo continuity</h2>
+  <p>The displayed coordinate means ⁰ origin event, ⁰ continuity, and ⁹ echo index. Implemented local Echo records link a machine-readable Echo identity to an origin event, producing agent, evidence commitment, generation, execution state, and parent Echo when present. The Unicode coordinate is presentation only; it is not an identifier, permission, or source of authority. An Echo does not authorize execution, establish consensus finality, or prove settlement.</p>
+  <h2>Protocol and evidence boundaries</h2>
+  <p>One evaluator family is implemented. An evidence digest commits to evidence bytes; it does not establish their truth. Review signatures show signed decisions; they do not prove reviewers independently ran the evaluator. Consensus integration, protocol state transition, a challenge window, settlement, Sybil resistance, general truth verification, and a cross-language canonical wire standard are not implemented. The local Go profile signs JSON in struct field order and does not claim a public canonical serialization format.</p>
+  <p>Agent participation is separate from the validator consensus topology. This profile does not change production admission or enable value execution. The public network and hosted agent service are not deployed, and software source distribution has not been authorized.</p>
+  <h2>Project history and scale context</h2>
+  <p>The owner-attributed project lineage is SoulSync → SolaraKin → AgentChain, documented from 2025 onward. An owner-controlled technical inventory records a preserved SolaraKin commit dated July 11, 2025; this dated implementation record is distinct from the attributed historical authorship account. AgentChain protocol designs documented in 2026 are later milestones, not project-origin dates.</p>
+  <p>The preserved Sovereign Workspace configuration documents 10,000 agents per shard as an architecture/configuration. Separately, a September 30, 2026 qualification reports 10,000 concurrent local Go goroutine tasks. Neither statement qualifies 10,000 independent agents.</p>
+  <p><a href="/agentchain/protocol/agentchain-protocol-profile-0.json">Machine-readable protocol profile</a> · <a href="/agentchain/agent-manifest.json">Agent discovery manifest</a></p>
+</main>
+<footer class="site-footer"><div class="container copyright"><a href="/">Pray4Love · AgentChain</a><span>Public developer documentation · hosted network and agent service not deployed</span></div></footer>
+</body>
+</html>

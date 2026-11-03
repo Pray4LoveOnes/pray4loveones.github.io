@@ -58,6 +58,10 @@ for (const path of ['sovereign-city/qualification.json', 'sovereign-city/runtime
   try { JSON.parse(readFileSync(join(root, path), 'utf8')); }
   catch (error) { fail(`${path}: invalid JSON (${error.message})`); }
 }
+for (const path of ['agentchain/agent-manifest.json', 'agentchain/agent-status.json', 'agentchain/protocol/agentchain-protocol-profile-0.json']) {
+  try { JSON.parse(readFileSync(join(root, path), 'utf8')); }
+  catch (error) { fail(`${path}: invalid JSON (${error.message})`); }
+}
 
 const qualification = JSON.parse(readFileSync(join(root, 'sovereign-city/qualification.json'), 'utf8'));
 const runtime = JSON.parse(readFileSync(join(root, 'sovereign-city/runtime.json'), 'utf8'));
@@ -73,6 +77,28 @@ for (const file of ['agentchain/sdk/index.html', 'agentchain/cli/index.html']) {
   const html = readFileSync(join(root, file), 'utf8');
   if (/\/Users\/[A-Za-z0-9._-]+\//.test(html)) fail(`${file}: owner-local filesystem path must not appear in public documentation.`);
 }
+
+const agentManifest = JSON.parse(readFileSync(join(root, 'agentchain/agent-manifest.json'), 'utf8'));
+const agentStatus = JSON.parse(readFileSync(join(root, 'agentchain/agent-status.json'), 'utf8'));
+const protocolProfile = JSON.parse(readFileSync(join(root, 'agentchain/protocol/agentchain-protocol-profile-0.json'), 'utf8'));
+const expectedLineage = ['SoulSync', 'SolaraKin', 'AgentChain'];
+for (const [label, lineage] of [
+  ['discovery manifest', agentManifest.history?.owner_attributed_lineage],
+  ['status manifest', agentStatus.history?.owner_attributed_lineage],
+  ['protocol profile', protocolProfile.project_lineage?.owner_attributed_sequence],
+]) {
+  if (JSON.stringify(lineage) !== JSON.stringify(expectedLineage)) fail(`${label}: preserve the documented 2025 project lineage.`);
+}
+if (agentManifest.history?.implementation_evidence?.earliest_preserved_solaraKin_record?.date !== '2025-07-11') fail('Discovery manifest must distinguish the recorded SolaraKin implementation date from project authorship attribution.');
+if (agentManifest.scale?.architecture_population?.configured_agents_per_shard !== 10000 || agentStatus.scale_context?.architecture_population?.configured_agents_per_shard !== 10000 || protocolProfile.scale_context?.configured_agents_per_shard !== 10000) fail('All machine profiles must preserve the separately documented 10,000-agent-per-shard architecture.');
+if (agentManifest.scale?.reported_local_workload?.concurrent_tasks !== 10000 || agentStatus.scale?.reported_local_workload?.concurrent_tasks !== 10000 || protocolProfile.scale_context?.separate_local_task_qualification?.concurrent_tasks !== 10000) fail('All machine profiles must preserve the separate 10,000-task qualification.');
+if (agentManifest.scale?.reported_local_workload?.unit !== 'local Go goroutine tasks' || agentManifest.scale?.reported_local_workload?.independent_agent_qualification !== false || agentStatus.scale?.reported_local_workload?.independent_agent_population !== false || protocolProfile.scale_context?.separate_local_task_qualification?.independent_agents !== false) fail('10,000-task results must not be represented as independent-agent qualification.');
+if (agentManifest.release?.website_publication !== 'publicly_served' || agentManifest.release?.software_distribution !== 'not_released' || agentManifest.service?.availability !== 'not_deployed') fail('Website publication, software distribution, and hosted service availability must remain distinct.');
+if (agentManifest.profiles?.[0]?.status !== 'implemented' || agentManifest.profiles?.[0]?.execution_scope !== 'local' || agentManifest.profiles?.[0]?.consensus_integration !== false) fail('Proof of Agency must distinguish implemented local capability from consensus integration.');
+if (agentManifest.profiles?.[1]?.display_coordinate !== '⁰⁰⁹' || agentManifest.profiles?.[1]?.display_coordinate_is_authority !== false || agentManifest.profiles?.[1]?.grants_execution_authority !== false) fail('Sovereign Echo display coordinate must remain presentation-only and grant no authority.');
+const publicHistory = readFileSync(join(root, 'agentchain/index.html'), 'utf8') + readFileSync(join(root, 'agentchain/status/index.html'), 'utf8') + readFileSync(join(root, 'agentchain/protocol/index.html'), 'utf8');
+if (!publicHistory.includes('SoulSync → SolaraKin → AgentChain') || !publicHistory.includes('not an independent legal authorship determination')) fail('Public pages must preserve the attributed lineage and its authorship evidence boundary.');
+if (/LOCAL ALPHA RELEASE CANDIDATE|LOCAL RESEARCH PROTOTYPE|documentation-candidate-only|local-review-candidate|not published/i.test(publicHistory)) fail('Public AgentChain documentation must not be described as unpublished merely because hosted service or software distribution is unavailable.');
 
 if (failures.length) {
   console.error(failures.map((message) => `- ${message}`).join('\n'));
