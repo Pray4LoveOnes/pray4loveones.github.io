@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Navier–Stokes · Seven-Kernel Visualization</title>
+  <meta name="description" content="Read-only procedural flow visualization. It is not a Navier–Stokes solver or a verified seven-kernel scientific result.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="visualization" aria-labelledby="visual-title">
+    <canvas id="flow-field" aria-hidden="true"></canvas>
+    <div class="grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div>
+        <a href="../../sovereign-city/" class="back">← SOVEREIGN CITY</a>
+        <p class="eyebrow">STATE_SPACE · PRESET / NAVIER_STOKES</p>
+        <h1 id="visual-title">Vorticity field</h1>
+      </div>
+      <div class="status"><i></i><span>PROCEDURAL · READ ONLY</span></div>
+    </header>
+
+    <section class="equation" aria-label="Navier-Stokes equations">
+      <span>∂<sub>t</sub>u + (u · ∇)u = −∇p + νΔu + f</span>
+      <span>∇ · u = 0</span>
+    </section>
+
+    <aside class="model-boundary">This particle field is a presentation-only procedural visualization. No Navier–Stokes solver is run and no physical result is inferred.</aside>
+    <section class="verdict" aria-labelledby="verdict-title">
+      <p class="eyebrow">SEVEN-KERNEL AGGREGATE</p>
+      <h2 id="verdict-title">UNKNOWN</h2>
+      <p class="verdict-state">NOT EVALUATED</p>
+      <p class="verdict-copy">No Navier–Stokes execution evidence or solver output is bound to this page.</p>
+      <div class="truth"><span>UNKNOWN ≠ FAILED</span><span>NO INFERENCE</span></div>
+    </section>
+
+    <section class="kernels" aria-label="Seven kernel channels">
+      <article><i></i><div><b>KERNEL 01</b><span>NOT RUN</span></div></article>
+      <article><i></i><div><b>KERNEL 02</b><span>NOT RUN</span></div></article>
+      <article><i></i><div><b>KERNEL 03</b><span>NOT RUN</span></div></article>
+      <article><i></i><div><b>KERNEL 04</b><span>NOT RUN</span></div></article>
+      <article><i></i><div><b>KERNEL 05</b><span>NOT RUN</span></div></article>
+      <article><i></i><div><b>KERNEL 06</b><span>NOT RUN</span></div></article>
+      <article><i></i><div><b>KERNEL 07</b><span>NOT RUN</span></div></article>
+    </section>
+
+    <footer class="evidence">
+      <div><small>SOURCE FIELD</small><strong>NAVIER_STOKES_USED: FALSE</strong></div>
+      <div><small>KERNEL VERDICTS</small><strong>0 / 7 PRESENT</strong></div>
+      <div><small>PROJECTION</small><strong>STATIC_READ_ONLY</strong></div>
+      <div><small>VORTICITY INTEGRAL</small><strong>UNMEASURED</strong></div>
+    </footer>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

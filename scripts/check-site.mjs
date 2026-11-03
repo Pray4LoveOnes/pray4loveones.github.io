@@ -41,7 +41,7 @@ for (const file of htmlFiles) {
       continue;
     }
     const [path, fragment] = reference.split('#');
-    let target = normalize(join(dirname(file), path));
+    let target = normalize(path.startsWith('/') ? join(root, path.slice(1)) : join(dirname(file), path));
     if (existsSync(target) && statSync(target).isDirectory()) target = join(target, 'index.html');
     if (!existsSync(target)) {
       fail(`${label}: missing reference ${reference}`);
@@ -66,6 +66,13 @@ if (qualification.truth_boundary?.value_execution !== 'DISABLED') fail('Qualific
 if (qualification.topology?.product_districts !== 8 || qualification.topology?.runtime_surfaces !== 7) fail('Qualification topology must distinguish 8 product districts from 7 runtime surfaces.');
 if (runtime.topology?.product_districts !== 8 || runtime.topology?.runtime_surfaces !== 7) fail('Runtime topology must distinguish 8 product districts from 7 runtime surfaces.');
 if (qualification.git?.repository_available === false && qualification.git?.commit !== null) fail('Unavailable source Git repository cannot publish a commit value.');
+if (qualification.historical_capture?.snapshot_date !== '2026-10-08' || qualification.historical_capture?.result !== 'PASS' || qualification.historical_capture?.project_origin_date !== false) fail('Qualification must date and scope the historical October 8 PASS without presenting it as project origin.');
+if (runtime.historical_capture?.snapshot_date !== '2026-10-08' || runtime.historical_capture?.qualification_result !== 'PASS' || runtime.historical_capture?.project_origin_date !== false) fail('Runtime must distinguish the historical October 8 qualification from project origin.');
+if (runtime.current_status?.runtime !== 'NOT_PUBLICLY_DEPLOYED' || runtime.current_status?.production_admission !== 'NOT_QUALIFIED' || runtime.current_status?.value_execution !== 'DISABLED') fail('Runtime must state current deployment and value-execution status separately from historical qualification.');
+for (const file of ['agentchain/sdk/index.html', 'agentchain/cli/index.html']) {
+  const html = readFileSync(join(root, file), 'utf8');
+  if (/\/Users\/[A-Za-z0-9._-]+\//.test(html)) fail(`${file}: owner-local filesystem path must not appear in public documentation.`);
+}
 
 if (failures.length) {
   console.error(failures.map((message) => `- ${message}`).join('\n'));

@@ -1,0 +1,33 @@
+{
+  "schema": "agentchain-sovereign-city-model/1",
+  "kind": "architecture_projection",
+  "truth": "DECLARED_MODEL_ONLY_NOT_DEPLOYMENT_TELEMETRY",
+  "districts": [
+    {"id":"the-kin","name":"The Kin","role":"Agent identity, participation, and collective coordination.","group":"identity"},
+    {"id":"the-forge","name":"The Forge","role":"Development and reproducible execution workflows.","group":"execution"},
+    {"id":"rwa-engine","name":"The RWA Engine","role":"Real-world asset workflow design and domain adapters.","group":"assets"},
+    {"id":"settlement-lane","name":"The Settlement Lane","role":"Settlement lifecycle and receipt boundaries. Value execution is disabled.","group":"settlement"},
+    {"id":"the-guardian","name":"The Guardian","role":"Policy, authorization boundaries, and safety controls.","group":"security"},
+    {"id":"the-oracle","name":"The Oracle","role":"Evidence inputs and independent verification interfaces.","group":"evidence"},
+    {"id":"the-bridge","name":"The Bridge","role":"Interoperability adapters and cross-domain coordination.","group":"interop"},
+    {"id":"the-vault","name":"The Vault","role":"Custody and asset-control boundary. No production signer is exposed.","group":"custody"}
+  ],
+  "surfaces": [
+    {"id":"command-center","name":"Command Center","role":"Operator visibility and coordination surface."},
+    {"id":"sovereign-bridge","name":"Sovereign Bridge","role":"Cross-domain interoperability surface."},
+    {"id":"kinswarm","name":"KinSwarm","role":"Agent collective participation surface."},
+    {"id":"shard-executor","name":"Shard Executor","role":"Bounded execution surface; current page does not assert live operation."},
+    {"id":"kin-layer","name":"Kin Layer","role":"Agent identity and participation layer."},
+    {"id":"kincorpus","name":"KinCorpus","role":"Knowledge and evidence organization surface."},
+    {"id":"asset-merge","name":"Asset Merge","role":"Asset workflow composition surface."}
+  ],
+  "links": [
+    ["command-center","the-kin"],["command-center","the-guardian"],["command-center","the-oracle"],
+    ["sovereign-bridge","the-bridge"],["sovereign-bridge","rwa-engine"],["sovereign-bridge","settlement-lane"],
+    ["kinswarm","the-kin"],["kinswarm","the-forge"],["kinswarm","the-oracle"],
+    ["shard-executor","the-forge"],["shard-executor","the-guardian"],["shard-executor","settlement-lane"],
+    ["kin-layer","the-kin"],["kin-layer","the-guardian"],
+    ["kincorpus","the-oracle"],["kincorpus","the-forge"],["kincorpus","the-kin"],
+    ["asset-merge","rwa-engine"],["asset-merge","the-vault"],["asset-merge","settlement-lane"]
+  ]
+}

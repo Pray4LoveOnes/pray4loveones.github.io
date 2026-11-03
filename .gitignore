@@ -1,0 +1,78 @@
+
+# ==================================================
+# PRAY4LOVE / AGENTCHAIN
+# PRIVATE FILES — DO NOT PUBLISH
+# ==================================================
+
+# Confidential audits and evidence
+session-audit-*
+**/session-audit-*
+private-evidence/
+**/private-evidence/
+private-research/
+internal-evidence/
+confidential/
+secrets/
+backups/
+checkpoints/
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.seed
+*.p12
+*.pfx
+*.keystore
+*.jks
+id_rsa*
+id_ed25519*
+*private-key*
+*private_key*
+*secret-key*
+*secret_key*
+
+# Local publication audits — review before release
+/PUBLICATION_MANIFEST.json
+/PUBLICATION_MANIFEST.sha256
+/PUBLICATION_SECURITY_REVIEW.json
+
+# Local development and build artifacts
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.toolchains/
+.venv/
+__pycache__/
+*.pyc
+*.log
+*.tmp
+*.bak
+*.swp
+
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Editor files
+.vscode/
+.idea/
+
+# Temporary local files
+tmp/
+temp/
+*.local
+
+# ==================================================
+# KEEP PUBLIC AGENTCHAIN FILES TRACKABLE
+# index.html
+# agentchain/
+# sovereign-city/
+# assets/
+# navier-stokes/
+# ==================================================

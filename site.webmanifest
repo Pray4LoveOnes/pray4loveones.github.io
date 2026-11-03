@@ -4,8 +4,8 @@
   "description": "Sovereign execution infrastructure for autonomous economies.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#07111f",
-  "theme_color": "#07111f",
+  "background_color": "#080d0a",
+  "theme_color": "#080d0a",
   "icons": [
     {
       "src": "/assets/favicon.svg",
