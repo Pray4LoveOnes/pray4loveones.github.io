@@ -20,7 +20,7 @@ jobs:
       - run: node --check assets/js/agentchain-demo.js
       - run: node --check sovereign-city/app.js
       - run: node --check sovereign-city/workbench.js
-      - run: node --check navier-stokes/visualization/app.js
+      - run: node --check visualization/app.js
       - run: node --check scripts/check-site.mjs
       - run: node --check scripts/test-agentchain-demo.mjs
       - run: node --check scripts/test-sovereign-city.cjs

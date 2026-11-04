@@ -6,7 +6,7 @@ This notice describes the public website release candidate in this repository. I
 
 The website uses static HTML, local CSS, and local JavaScript with operating-system font stacks. Its pages do not load third-party scripts, stylesheets, fonts, analytics, advertising, wallet libraries, or package-manager dependencies at runtime. The Navier–Stokes page renders a procedural canvas visualization and does not bundle a solver library.
 
-Two unreferenced files in the current local worktree, `assets/images/navier-stokes-seven-kernel-verdict.png` and `assets/images/navier-stokes-seven-kernel-verdict.svg`, have no verified source or attribution. They are excluded from the staged website release. No ownership or third-party license status is asserted for them.
+Two unreferenced files in the current local worktree, `assets/images/figure-01.png` and `assets/images/figure-01.svg`, have no verified source or attribution. They are excluded from the staged website release. No ownership or third-party license status is asserted for them.
 
 ## Links and references
 
