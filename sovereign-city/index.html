@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#07111f">
 <title>Sovereign City · AgentChain</title>
 <meta name="description" content="Interactive, model-driven projections of the AgentChain Sovereign City architecture and a clearly labeled local qualification snapshot.">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../site.webmanifest"><link rel="stylesheet" href="./style.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../site.webmanifest"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="../assets/css/agentchain-verifier.css">
 </head>
 <body>
 <main class="shell">
@@ -21,10 +21,33 @@
 <section class="workbench-section" id="agent-workbench" aria-labelledby="workbench-title">
 <div class="section-head"><div><p class="eyebrow">AGENT-NATIVE CONTINUITY · LOCAL WORKBENCH</p><h2 id="workbench-title">⁰⁰⁹ — The Sovereign Echo</h2></div><p>An Echo commits to an evaluated result and its signed origin event. It records lineage; it never grants execution authority or settlement finality.</p></div>
 <div class="workbench-panel"><div class="workbench-intro"><div class="echo-coordinate" aria-hidden="true"><span>⁰</span><i></i><span>⁰</span><i></i><b>⁹</b></div><div><p><strong>Origin · Continuity · Echo index</strong></p><p>Agent work is verified against the existing deterministic Proof of Agency evaluator, independently reviewed, committed into signed agent state, then continued only by an identity authorized by its parent Echo.</p><div class="workflow-chain" aria-label="Local agent workflow stages"><span>Identity</span><i>→</i><span>Commitment</span><i>→</i><span>Contribution</span><i>→</i><span>Evaluation</span><i>→</i><span>Review</span><i>→</i><span>Echo</span><i>→</i><span>Continuation</span></div></div></div>
-<div class="workbench-controls"><div><span class="local-status-dot" id="local-status-dot"></span><strong id="local-service-status" role="status">Local agent workbench is not connected.</strong><small id="local-service-detail">The public GitHub Pages view never contacts localhost. Start the owner-controlled loopback workbench to run the signed local workflow.</small></div><button type="button" id="run-agent-demo" disabled>RUN LOCAL COLLECTIVE →</button></div>
+<div class="workbench-controls"><div><span class="local-status-dot" id="local-status-dot"></span><strong id="local-service-status" role="status">Owner-controlled local capability</strong><small id="local-service-detail">This workflow runs only in the owner’s authenticated loopback workbench. It is not an action available on the public website.</small></div><button type="button" id="run-agent-demo" hidden>RUN LOCAL COLLECTIVE →</button></div>
 <div id="workflow-result" class="workflow-result" hidden aria-live="polite"></div>
 <div class="lineage-block"><div class="lineage-heading"><span>APPEND-ONLY ECHO LINEAGE</span><span id="lineage-count">NO LOCAL RECORDS</span></div><div id="echo-lineage" class="echo-lineage"><p class="empty-lineage">Local persistent lineage appears here after the authenticated workbench is connected.</p></div></div>
 <p class="workbench-boundary">Demo identities use ephemeral Ed25519 keys. Only public evidence, signatures, commitments, and Echo records persist locally. Consensus, validator keys, external RPC, settlement, and real-value execution are not called.</p></div>
+</section>
+<section class="public-verifier" id="public-proof-verifier" aria-labelledby="public-verifier-title">
+<div class="section-head"><div><p class="eyebrow">PUBLIC · BROWSER-LOCAL · READ ONLY</p><h2 id="public-verifier-title">Verify Proof</h2></div><p>Check a public AgentChain proof bundle in this browser. The file stays on your device and is never sent to the local workbench or a server.</p></div>
+<div class="public-verifier-card">
+<p class="proof-spec-link"><a href="../agentchain/verifier/">Read the public proof format and SDK specification →</a></p>
+<form id="proof-verifier-form">
+<label for="proof-bundle-file">Choose a public proof bundle (JSON)</label>
+<div class="proof-file-row"><input id="proof-bundle-file" name="proofBundle" type="file" accept="application/json,.json" required><button type="submit" class="proof-verify-button">VERIFY PROOF</button></div>
+<p class="proof-privacy-note">Use only evidence intended for public review. Do not select private workbench records, credentials, or keys. Verification runs locally in this browser; nothing is uploaded.</p>
+</form>
+<div id="proof-verifier-result" class="proof-result incomplete" role="status" aria-live="polite"><p class="proof-result-label">INCOMPLETE</p><h3>No proof bundle selected</h3><p>Choose a public proof bundle to inspect its evidence.</p></div>
+<div class="proof-explanation" aria-label="Verification explanation">
+<div class="proof-level-tabs" role="tablist" aria-label="Explanation level">
+<button type="button" role="tab" id="proof-tab-simple" aria-controls="proof-panel-simple" aria-selected="true">Simple</button>
+<button type="button" role="tab" id="proof-tab-learn" aria-controls="proof-panel-learn" aria-selected="false">Learn More</button>
+<button type="button" role="tab" id="proof-tab-technical" aria-controls="proof-panel-technical" aria-selected="false">Technical</button>
+</div>
+<div id="proof-panel-simple" class="proof-level-panel" role="tabpanel" aria-labelledby="proof-tab-simple"><p id="proof-simple-copy">A verifier checks whether the supplied evidence matches its signatures and the public rules.</p></div>
+<div id="proof-panel-learn" class="proof-level-panel" role="tabpanel" aria-labelledby="proof-tab-learn" hidden><p>Signatures identify which trusted keys signed records. Hashes check that linked evidence has not changed. The public evaluation rule is recomputed from the included challenge and contribution. A valid signature alone does not prove a contribution is true, useful, independently reviewed, finalized, or settled.</p></div>
+<div id="proof-panel-technical" class="proof-level-panel" role="tabpanel" aria-labelledby="proof-tab-technical" hidden><p id="proof-technical-copy">Technical output appears here after a proof bundle is selected.</p><details id="proof-input-details" hidden><summary>Inspect selected proof bundle</summary><pre id="proof-input-json"></pre></details></div>
+</div>
+<p id="proof-trust-status" class="proof-trust-status">Loading the published trust policy…</p>
+</div>
 </section>
 <section class="city-section" aria-labelledby="city-title">
 <div class="section-head"><div><p class="eyebrow">ONE MODEL · SIX WAYS TO SEE IT</p><h2 id="city-title">Explore Sovereign City</h2></div><p id="model-caption">Spatial city projection. Select a district, runtime surface, or relationship to inspect the model.</p></div>
@@ -41,9 +64,9 @@
 </section>
 <section class="catalog-section"><div class="section-head"><div><p class="eyebrow">SYSTEM SURFACES</p><h2>Distinct layers, connected model.</h2></div><p>Runtime surfaces and product districts are separate taxonomies. Select an entry to focus it in the visualization.</p></div><div class="catalog-grid"><div><div class="catalog-label"><span>01—07</span><h3>Runtime surfaces</h3></div><div id="surface-list" class="entity-list"></div></div><div><div class="catalog-label"><span>01—08</span><h3>Product districts</h3></div><div id="district-list" class="entity-list"></div></div></div></section>
 <section class="runtime-section"><div class="section-head"><div><p class="eyebrow">LOCAL QUALIFICATION CAPTURE</p><h2>Dated runtime snapshot</h2></div><p id="captured">Loading snapshot metadata…</p></div><div id="metrics" class="metrics"></div><div class="snapshot-note">This is a static, historical local qualification projection, not live telemetry. A separate loopback-only workbench can run locally reproducible Proof of Agency and Echo workflows. Current public testnet is not deployed; production qualification and value execution remain unavailable.</div></section>
-<section class="boundary"><div><p class="eyebrow">PUBLIC / PRIVATE BOUNDARY</p><h2>Visible architecture.<br><em>Owner-controlled execution.</em></h2></div><p>The public deployment remains a static, read-only projection. The optional local workbench uses a same-origin authenticated loopback API for bounded demonstrations; it exposes no production signing, validator control, private orchestration, external RPC, or settlement operation.</p></section>
+<section class="boundary"><div><p class="eyebrow">PUBLIC / PRIVATE BOUNDARY</p><h2>Visible architecture.<br><em>Owner-controlled execution.</em></h2></div><p>The public deployment remains a static, read-only projection with browser-local proof verification. The optional workbench is a separate owner-controlled capability bound to an authenticated loopback service; the public site never contacts it. Neither feature enables production signing, validator control, private orchestration, external RPC, or settlement.</p></section>
 <footer><a href="../">AgentChain home</a><a href="../agentchain/">Developer portal</a><a href="../agentchain/protocol/">Protocol</a><a href="../agentchain/sdk/">SDK</a><a href="../agentchain/cli/">CLI</a><a href="./qualification.json">Qualification manifest</a><a href="./runtime.json">Runtime snapshot</a><a href="../legal/ip.html">IP</a><a href="../legal/security.html">Security</a><a href="../legal/terms.html">Terms</a><a href="../legal/privacy.html">Privacy</a></footer>
 </main>
-<script src="./app.js"></script><script src="./workbench.js"></script>
+<script src="./app.js"></script><script src="./workbench.js"></script><script type="module" src="./verifier-ui.mjs"></script>
 </body>
 </html>

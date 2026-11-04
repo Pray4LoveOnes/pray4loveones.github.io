@@ -10,7 +10,18 @@ const required = [
   'site.webmanifest',
   'assets/favicon.svg',
   'assets/og-agentchain.svg',
-  'assets/og-agentchain.png'
+  'assets/og-agentchain.png',
+  'assets/css/agentchain-verifier.css',
+  'agentchain/verifier/index.mjs',
+  'agentchain/verifier/index.html',
+  'agentchain/verifier/README.md',
+  'agentchain/verifier/trust-anchors.v1.json',
+  'agentchain/verifier/agentchain-proof-bundle.schema.json',
+  'sovereign-city/verifier-ui.mjs',
+  'scripts/test-agentchain-verifier.mjs',
+  'visualization/index.html',
+  'visualization/app.js',
+  'visualization/style.css'
 ];
 
 function fail(message) { failures.push(message); }
@@ -54,7 +65,22 @@ for (const file of htmlFiles) {
   }
 }
 
-for (const path of ['sovereign-city/qualification.json', 'sovereign-city/runtime.json', 'site.webmanifest']) {
+for (const file of filesUnder(root).filter((candidate) => ['.js', '.mjs'].includes(extname(candidate)))) {
+  const source = readFileSync(file, 'utf8');
+  for (const match of source.matchAll(/(?:\bfrom\s*|\bimport\s*)['"](\.[^'"]+)['"]/g)) {
+    const specifier = match[1];
+    const target = resolve(dirname(file), specifier);
+    if (!existsSync(target) || !statSync(target).isFile()) fail(`${relative(root, file)}: missing module import ${specifier}`);
+  }
+}
+
+for (const path of [
+  'sovereign-city/qualification.json',
+  'sovereign-city/runtime.json',
+  'site.webmanifest',
+  'agentchain/verifier/trust-anchors.v1.json',
+  'agentchain/verifier/agentchain-proof-bundle.schema.json'
+]) {
   try { JSON.parse(readFileSync(join(root, path), 'utf8')); }
   catch (error) { fail(`${path}: invalid JSON (${error.message})`); }
 }
@@ -99,6 +125,20 @@ if (agentManifest.profiles?.[1]?.display_coordinate !== '⁰⁰⁹' || agentMani
 const publicHistory = readFileSync(join(root, 'agentchain/index.html'), 'utf8') + readFileSync(join(root, 'agentchain/status/index.html'), 'utf8') + readFileSync(join(root, 'agentchain/protocol/index.html'), 'utf8');
 if (!publicHistory.includes('SoulSync → SolaraKin → AgentChain') || !publicHistory.includes('not an independent legal authorship determination')) fail('Public pages must preserve the attributed lineage and its authorship evidence boundary.');
 if (/LOCAL ALPHA RELEASE CANDIDATE|LOCAL RESEARCH PROTOTYPE|documentation-candidate-only|local-review-candidate|not published/i.test(publicHistory)) fail('Public AgentChain documentation must not be described as unpublished merely because hosted service or software distribution is unavailable.');
+
+const verifierPage = readFileSync(join(root, 'sovereign-city/index.html'), 'utf8');
+const workbenchJs = readFileSync(join(root, 'sovereign-city/workbench.js'), 'utf8');
+const verifierUi = readFileSync(join(root, 'sovereign-city/verifier-ui.mjs'), 'utf8');
+const verifierSdk = readFileSync(join(root, 'agentchain/verifier/index.mjs'), 'utf8');
+const trustAnchors = JSON.parse(readFileSync(join(root, 'agentchain/verifier/trust-anchors.v1.json'), 'utf8'));
+if (!verifierPage.includes('id="public-proof-verifier"') || !verifierPage.includes('Verify Proof')) fail('Sovereign City must expose the public proof verifier interface.');
+if (!verifierPage.includes('id="run-agent-demo" hidden') || !workbenchJs.includes('run.hidden=true') || !workbenchJs.includes('run.hidden=false')) fail('Local execution control must be absent from the public view and revealed only on the owner loopback origin.');
+if (!existsSync(join(root, 'visualization/index.html')) || existsSync(join(root, 'navier-stokes/visualization/index.html'))) fail('Visualization must be published from the relocated /visualization/ path only.');
+if (/127\.0\.0\.1|localhost|\/api\//i.test(verifierUi + verifierSdk)) fail('Public proof verifier must not call loopback or private workbench APIs.');
+if (/\b(fetch|XMLHttpRequest|WebSocket|EventSource)\b|\.subtle\.sign\b/.test(verifierSdk)) fail('Standalone verifier SDK must not perform network calls or sign data.');
+if ((verifierUi.match(/\bfetch\(/g) || []).length !== 1 || !verifierUi.includes('../agentchain/verifier/trust-anchors.v1.json')) fail('Verifier page may fetch only the static public trust-anchor file.');
+if (trustAnchors.schema !== 'agentchain-trust-anchors/1' || !Array.isArray(trustAnchors.keys)) fail('Public verifier trust anchors must use the versioned trust-anchor schema.');
+if (trustAnchors.keys.some((key) => Object.keys(key).some((name) => /private|secret|seed/i.test(name)))) fail('Public trust anchors must never contain private key material.');
 
 if (failures.length) {
   console.error(failures.map((message) => `- ${message}`).join('\n'));

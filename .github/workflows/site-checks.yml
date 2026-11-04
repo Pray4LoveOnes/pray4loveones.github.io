@@ -21,9 +21,13 @@ jobs:
       - run: node --check sovereign-city/app.js
       - run: node --check sovereign-city/workbench.js
       - run: node --check visualization/app.js
+      - run: node --check agentchain/verifier/index.mjs
+      - run: node --check sovereign-city/verifier-ui.mjs
       - run: node --check scripts/check-site.mjs
+      - run: node --check scripts/test-agentchain-verifier.mjs
       - run: node --check scripts/test-agentchain-demo.mjs
       - run: node --check scripts/test-sovereign-city.cjs
       - run: node scripts/check-site.mjs
       - run: node scripts/test-agentchain-demo.mjs
       - run: node scripts/test-sovereign-city.cjs
+      - run: node scripts/test-agentchain-verifier.mjs

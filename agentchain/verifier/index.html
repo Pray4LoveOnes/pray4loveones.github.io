@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Versioned AgentChain public proof bundle format and dependency-free browser verification SDK.">
+  <title>Public Proof Verifier v1 | AgentChain</title>
+  <link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/agentchain-portal.css">
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="/" aria-label="AgentChain home"><span class="brand-mark">A</span><span>AGENT<span class="brand-muted">CHAIN</span></span></a><nav class="portal-nav" aria-label="Developer navigation"><a href="/agentchain/">Gateway</a><a href="/agentchain/protocol/">Protocol</a><a href="/agentchain/sdk/">SDK</a><a href="/agentchain/verify/">Verify</a><a href="/sovereign-city/#public-proof-verifier">Verify Proof</a></nav></div></header>
+<main class="container portal-doc">
+  <p class="portal-kicker">PUBLIC FORMAT · VERSION 1</p>
+  <h1>AgentChain Public<br><em>Proof Verifier</em></h1>
+  <p class="portal-state">STATIC SDK · LOCAL BROWSER CHECKS · NO PRIVATE WORKBENCH ACCESS</p>
+  <p class="portal-lede">A dependency-free JavaScript module for checking explicitly public proof bundles. Third-party sites can import the verifier and supply their own out-of-band trust anchors.</p>
+  <div class="portal-callout"><b>Current trust boundary</b><br>The website currently publishes zero trusted identity keys and no proof examples. Real signers therefore return Incomplete until their keys are explicitly approved and published. No local workbench records or keys are included.</div>
+  <h2>Use the SDK</h2>
+  <pre><code>import { verifyProofBundle } from '/agentchain/verifier/index.mjs';
+
+const report = await verifyProofBundle(bundle, { trustAnchors });
+console.log(report.status, report.checks);</code></pre>
+  <p><a href="/agentchain/verifier/index.mjs">SDK module</a> · <a href="/agentchain/verifier/agentchain-proof-bundle.schema.json">Bundle JSON Schema</a> · <a href="/agentchain/verifier/trust-anchors.v1.json">Published trust anchors</a> · <a href="/agentchain/verifier/README.md">Full v1 specification</a></p>
+  <h2>What v1 checks</h2>
+  <ul>
+    <li>Identity, commitment, contribution, evaluation, review, origin event, Echo lineage, and each continuation authorization.</li>
+    <li>Ed25519 signatures over exact canonical bytes and SHA-256 digests over canonical JSON.</li>
+    <li>A separately supplied trust-anchor set; keys embedded in a proof bundle are never trusted.</li>
+    <li>Recomputation of the published <code>agentchain-public-weighted-coverage/1</code> rule.</li>
+    <li>Distinct trusted reviewer identities meeting the supplied reviewer threshold, plus valid parent-authorized continuation links.</li>
+  </ul>
+  <p>Validator certificates are not included: no public certificate format or trusted validator set is published here. Such evidence is reported as <b>Unsupported</b>, not accepted implicitly.</p>
+  <h2>What Verified means</h2>
+  <p><b>Verified</b> means the bundle passed the implemented v1 checks under the caller’s trust policy. It does not prove contribution truth or usefulness, actual reviewer independence, consensus finality, deployment, settlement, or value execution. The public rule is a separately versioned format and does not claim compatibility with the private/local evaluator; that evaluator’s exact wire rules are not published.</p>
+  <h2>Run a local browser check</h2>
+  <p><a class="button button-primary" href="/sovereign-city/#public-proof-verifier">Open Verify Proof in Sovereign City ↗</a></p>
+</main>
+<footer class="site-footer"><div class="container copyright"><a href="/">AgentChain</a><span>Public proof verification · Static hosting</span></div></footer>
+</body>
+</html>

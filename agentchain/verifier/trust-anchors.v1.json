@@ -1,0 +1,7 @@
+{
+  "schema": "agentchain-trust-anchors/1",
+  "policy": {
+    "reviewer_threshold": 2
+  },
+  "keys": []
+}

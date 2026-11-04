@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pray4loveones.github.io/agentchain/verifier/agentchain-proof-bundle.schema.json",
+  "title": "AgentChain Public Proof Bundle v1",
+  "type": "object",
+  "required": ["schema", "bundle_id", "proofs"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "agentchain-proof-bundle/1" },
+    "bundle_id": { "type": "string", "minLength": 1 },
+    "proofs": {
+      "type": "object",
+      "required": ["identity", "commitment", "contribution", "evaluation", "review_attestations", "origin_event", "echo_lineage", "continuations"],
+      "additionalProperties": false,
+      "properties": {
+        "identity": { "$ref": "#/$defs/identity" },
+        "commitment": { "$ref": "#/$defs/commitment" },
+        "contribution": { "$ref": "#/$defs/contribution" },
+        "evaluation": { "$ref": "#/$defs/evaluation" },
+        "review_attestations": { "type": "array", "items": { "$ref": "#/$defs/review" } },
+        "origin_event": { "$ref": "#/$defs/originEvent" },
+        "echo_lineage": { "type": "array", "items": { "$ref": "#/$defs/echo" } },
+        "continuations": { "type": "array", "items": { "$ref": "#/$defs/continuation" } }
+      }
+    }
+  },
+  "$defs": {
+    "signedRecord": {
+      "type": "object",
+      "required": ["schema", "kind", "payload", "signed_bytes", "signature"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "const": "agentchain-signed-record/1" },
+        "kind": { "type": "string" },
+        "payload": { "type": "object" },
+        "signed_bytes": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+        "signature": {
+          "type": "object",
+          "required": ["algorithm", "key_id", "value"],
+          "additionalProperties": false,
+          "properties": {
+            "algorithm": { "type": "string" },
+            "key_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "value": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" }
+          }
+        }
+      }
+    },
+    "identity": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "identity" } } }
+      ]
+    },
+    "commitment": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "commitment" } } }
+      ]
+    },
+    "contribution": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "contribution" } } }
+      ]
+    },
+    "evaluation": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "evaluation" } } }
+      ]
+    },
+    "review": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "review" } } }
+      ]
+    },
+    "originEvent": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "origin-event" } } }
+      ]
+    },
+    "echo": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "echo" } } }
+      ]
+    },
+    "continuation": {
+      "allOf": [
+        { "$ref": "#/$defs/signedRecord" },
+        { "properties": { "kind": { "const": "continuation" } } }
+      ]
+    }
+  }
+}

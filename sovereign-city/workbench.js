@@ -10,12 +10,13 @@
   const esc=(value)=>String(value??'UNKNOWN');
   const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n;};
   if(!isOwnerLoopback){
-    status.textContent='LOCAL WORKBENCH OFFLINE · PUBLIC VIEW IS STATIC';
-    detail.textContent='This page makes no localhost requests when served from GitHub Pages or another host. Start the owner-controlled loopback workbench on 127.0.0.1:8789 to enable the local workflow.';
+    status.textContent='OWNER-CONTROLLED LOCAL CAPABILITY';
+    detail.textContent='The public site does not connect to the local workbench. Its authenticated workflow is available only to the owner in the separate loopback environment.';
     dot.classList.add('offline');
-    run.disabled=true;
+    run.hidden=true;
     return;
   }
+  run.hidden=false;
   async function json(url,options={}){
     const response=await fetch(url,{cache:'no-store',credentials:'same-origin',...options});
     const body=await response.json().catch(()=>({}));
